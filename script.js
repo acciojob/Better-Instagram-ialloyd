@@ -1,6 +1,5 @@
-//your code here
 window.onload = function() {
-   let divs = document.querySelectorAll('.image');
+  let divs = document.querySelectorAll('.image');
   for (let i = 0; i < divs.length; i++) {
     divs[i].setAttribute('id', 'div' + (i + 1));
     divs[i].addEventListener("dragstart", handleDragStart, false);
@@ -30,9 +29,16 @@ function handleDrop(e) {
     e.stopPropagation();
   }
   if (dragSrcEl != this) {
-    let srcBgImage = dragSrcEl.style.backgroundImage;
-    dragSrcEl.style.backgroundImage = this.style.backgroundImage;
-    this.style.backgroundImage = srcBgImage;
+    let parent = document.querySelector('#parent');
+    let srcIndex = Array.prototype.indexOf.call(parent.children, dragSrcEl);
+    let targetIndex = Array.prototype.indexOf.call(parent.children, this);
+    if (srcIndex < targetIndex) {
+      parent.insertBefore(dragSrcEl, this.nextSibling);
+      parent.insertBefore(this, parent.children[srcIndex]);
+    } else {
+      parent.insertBefore(this, dragSrcEl);
+      parent.insertBefore(dragSrcEl, parent.children[targetIndex]);
+    }
   }
   return false;
 }
