@@ -2,7 +2,7 @@
 window.onload = function() {
    let divs = document.querySelectorAll('.image');
   for (let i = 0; i < divs.length; i++) {
-    divs[i].setAttribute('id', 'drag' + (i + 1));
+    divs[i].setAttribute('id', 'div' + (i + 1));
     divs[i].addEventListener("dragstart", handleDragStart, false);
     divs[i].addEventListener("dragover", handleDragOver, false);
     divs[i].addEventListener("drop", handleDrop, false);
