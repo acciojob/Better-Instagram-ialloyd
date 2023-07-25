@@ -11,7 +11,7 @@ window.onload = function() {
 let dragSrcEl = null;
 
 function handleDragStart(e) {
-  this.style.opacity = '0.4';
+  
   dragSrcEl = this;
   e.dataTransfer.effectAllowed = 'move';
 }
